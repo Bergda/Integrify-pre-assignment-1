@@ -1,0 +1,24 @@
+button {
+    background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	background-color:#33bdef;
+    border-radius: 6px;
+    border: 2px solid #057fd0;
+    cursor:pointer;
+    color: white;
+    position: absolute;
+    bottom: 40px;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    width: 140px;
+    height: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+button:hover {
+    background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	background-color:#019ad2;
+}
+

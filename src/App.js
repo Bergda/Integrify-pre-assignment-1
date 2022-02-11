@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Card from "./components/card";
+import Details from "./components/details";
+import "./App.css";
 
-function App() {
+function App () {
+  let [data, setData] = useState([]);
+
+  const fetchData = () =>
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => setData(data))
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className="page">
+        <Router>
+          <Routes>
+            <Route exact path="/" element=
+              {data.map((data, index) => (
+              <Card key={index} data={data}/>
+              ))}
+            />
+
+            <Route path="/details/:id" element=
+              {<Details data={data}/>} 
+            />
+
+          </Routes>
+        </Router>
+      </div>
+  )
 }
 
 export default App;
